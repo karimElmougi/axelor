@@ -1,0 +1,24 @@
+services:
+  axelor:
+    image: axelor
+    container_name: axelor
+    ports:
+      - "8080:8080"
+    networks:
+      - axelor
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:17.2
+    container_name: postgres
+    environment:
+      POSTGRES_USER: axelor
+      POSTGRES_PASSWORD: axelor
+      POSTGRES_DB: axelor-open-suite
+    networks:
+      - axelor
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data
+networks:
+  axelor:
+    driver: bridge
