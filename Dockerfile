@@ -8,7 +8,7 @@ RUN mkdir -p ~/.ssh && ssh-keyscan github.com >> ~/.ssh/known_hosts
 
 ARG VERSION=v8.2.2
 RUN git clone --depth 1 --branch ${VERSION} https://github.com/axelor/open-suite-webapp
-WORKDIR open-suite-webapp
+WORKDIR /open-suite-webapp
 
 # Use HTTPS for cloning git submodules
 RUN sed -i 's|git@github.com:|https://github.com/|g' .gitmodules
